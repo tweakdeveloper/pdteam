@@ -7,6 +7,10 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_cookie_manager/webview_cookie_manager.dart';
 
 class LoginView extends StatefulWidget {
+  Function setSpinnerVisible;
+
+  LoginView({Key key, @required this.setSpinnerVisible}) : super(key: key);
+
   @override
   _LoginViewState createState() => _LoginViewState();
 }
@@ -24,6 +28,8 @@ class _LoginViewState extends State<LoginView> {
       builder: (BuildContext context) => WebView(
         initialUrl: 'https://aaregional.arcos-inc.com',
         javascriptMode: JavascriptMode.unrestricted,
+        onPageStarted: (_) => widget.setSpinnerVisible(true),
+        onPageFinished: (_) => widget.setSpinnerVisible(false),
         navigationDelegate: (NavigationRequest request) async {
           if (request.url.endsWith('/Default.aspx')) {
             final cookieManager = WebviewCookieManager();
