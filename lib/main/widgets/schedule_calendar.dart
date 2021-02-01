@@ -15,15 +15,12 @@ class ScheduleCalendar extends StatelessWidget {
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: week.days.map<Widget>((day) {
-            final decoration = day.shifts.length != 0
-                ? BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Theme.of(context).accentColor,
-                      ),
-                    ),
-                  )
-                : null;
+            final dots = Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: day.shifts.map<Widget>((shift) {
+                return IndicatorDot(color: Color(shift.color));
+              }).toList(),
+            );
             return Expanded(
               child: Padding(
                 padding: EdgeInsets.all(4),
@@ -38,10 +35,17 @@ class ScheduleCalendar extends StatelessWidget {
                           ));
                     },
                     child: Container(
-                      decoration: decoration,
                       padding: EdgeInsets.all(8),
-                      child: Center(
-                        child: Text(day.date),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Expanded(
+                            child: Center(
+                              child: Text(day.date),
+                            ),
+                          ),
+                          dots,
+                        ],
                       ),
                     ),
                   ),
