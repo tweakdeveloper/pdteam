@@ -8,6 +8,11 @@ class MainPage extends StatelessWidget {
     final MainArguments args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(title: Text('My Schedule')),
+      body: Center(
+        child: ScheduleView(
+          token: args.rosterAppsAuthToken,
+        ),
+      ),
     );
   }
 }
