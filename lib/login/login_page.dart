@@ -6,7 +6,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('PDTeam')),
+      appBar: AppBar(title: Text('Login to RosterApps')),
       body: LoginView(),
     );
   }
