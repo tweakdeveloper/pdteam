@@ -9,41 +9,48 @@ class ScheduleCalendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1.5,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: schedule.weeks.map<Widget>((week) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: week.days.map<Widget>((day) {
-              final decoration = day.shifts.length != 0
-                  ? BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Theme.of(context).accentColor,
-                        ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: schedule.weeks.map<Widget>((week) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: week.days.map<Widget>((day) {
+            final decoration = day.shifts.length != 0
+                ? BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Theme.of(context).accentColor,
                       ),
-                    )
-                  : null;
-              return InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DayPage(day: day),
-                      ));
-                },
-                child: Container(
-                  decoration: decoration,
-                  padding: EdgeInsets.all(8),
-                  child: Text(day.date),
+                    ),
+                  )
+                : null;
+            return Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(4),
+                child: AspectRatio(
+                  aspectRatio: 1.0,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DayPage(day: day),
+                          ));
+                    },
+                    child: Container(
+                      decoration: decoration,
+                      padding: EdgeInsets.all(8),
+                      child: Center(
+                        child: Text(day.date, textAlign: TextAlign.center),
+                      ),
+                    ),
+                  ),
                 ),
-              );
-            }).toList(),
-          );
-        }).toList(),
-      ),
+              ),
+            );
+          }).toList(),
+        );
+      }).toList(),
     );
   }
 }
