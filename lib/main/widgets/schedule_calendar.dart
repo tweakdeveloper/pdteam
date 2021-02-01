@@ -17,7 +17,7 @@ class ScheduleCalendar extends StatelessWidget {
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: week.days.map<Widget>((day) {
-              final decoration = day.hasShift
+              final decoration = day.shifts.length != 0
                   ? BoxDecoration(
                       border: Border(
                         bottom: BorderSide(

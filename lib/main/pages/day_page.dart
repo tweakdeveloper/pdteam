@@ -11,6 +11,16 @@ class DayPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('The ${day.date}')),
+      body: ListView.builder(
+        itemCount: day.shifts.length,
+        itemBuilder: (context, index) {
+          final shift = day.shifts[index];
+          return ListTile(
+            title: Text(shift.skill),
+            subtitle: Text(shift.times),
+          );
+        },
+      ),
     );
   }
 }

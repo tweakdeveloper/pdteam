@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:html/dom.dart' as dom;
 
 import 'package:pdteam/main/main.dart';
@@ -16,7 +14,13 @@ class Schedule {
         days: week.querySelectorAll('td').map((day) {
           return Day(
             date: new RegExp(r'\d+').firstMatch(day.text).group(0),
-            hasShift: day.querySelectorAll('.monthShiftBox').length != 0,
+            shifts: day.querySelectorAll('.monthShiftBox').map<Shift>((shift) {
+              final shiftattrs = shift.innerHtml.split('<br>');
+              return Shift(
+                times: shiftattrs[1],
+                skill: shiftattrs[2],
+              );
+            }).toList(),
           );
         }).toList(),
       );
