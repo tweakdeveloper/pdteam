@@ -13,10 +13,10 @@ class ScheduleCalendar extends StatelessWidget {
       aspectRatio: 1.5,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: schedule.weeks.map<Row>((week) {
+        children: schedule.weeks.map<Widget>((week) {
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: week.days.map<Container>((day) {
+            children: week.days.map<Widget>((day) {
               final decoration = day.hasShift
                   ? BoxDecoration(
                       border: Border(
@@ -26,10 +26,19 @@ class ScheduleCalendar extends StatelessWidget {
                       ),
                     )
                   : null;
-              return Container(
-                decoration: decoration,
-                padding: EdgeInsets.all(8),
-                child: Text(day.date),
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DayPage(day: day),
+                      ));
+                },
+                child: Container(
+                  decoration: decoration,
+                  padding: EdgeInsets.all(8),
+                  child: Text(day.date),
+                ),
               );
             }).toList(),
           );
