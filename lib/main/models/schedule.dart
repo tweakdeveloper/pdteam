@@ -16,9 +16,38 @@ class Schedule {
             date: new RegExp(r'\d+').firstMatch(day.text).group(0),
             shifts: day.querySelectorAll('.monthShiftBox').map<Shift>((shift) {
               final shiftattrs = shift.innerHtml.split('<br>');
+              int color;
+              switch (shift.classes.last) {
+                case 'red':
+                  {
+                    color = 0xffff0000;
+                  }
+                  break;
+                case 'blue':
+                  {
+                    color = 0xff0000ff;
+                  }
+                  break;
+                case 'turquoise':
+                  {
+                    color = 0xff00ffff;
+                  }
+                  break;
+                case 'purple':
+                  {
+                    color = 0xffff00ff;
+                  }
+                  break;
+                default:
+                  {
+                    color = 0x0;
+                  }
+                  break;
+              }
               return Shift(
                 times: shiftattrs[1],
                 skill: shiftattrs[2],
+                color: color,
               );
             }).toList(),
           );

@@ -15,9 +15,15 @@ class DayPage extends StatelessWidget {
         itemCount: day.shifts.length,
         itemBuilder: (context, index) {
           final shift = day.shifts[index];
-          return ListTile(
-            title: Text(shift.skill),
-            subtitle: Text(shift.times),
+          return Card(
+            child: ListTile(
+              title: Text(shift.skill),
+              subtitle: Text(shift.times),
+              leading: Container(
+                width: 5,
+                color: Color(shift.color),
+              ),
+            ),
           );
         },
       ),
