@@ -17,10 +17,10 @@ class _LoginPageState extends State<LoginPage> {
         title: Text('Login to RosterApps'),
         actions: [
           Visibility(
-            child: AspectRatio(
-              aspectRatio: 1.0,
+            child: FittedBox(
+              fit: BoxFit.contain,
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.all(20),
                 child: CircularProgressIndicator(),
               ),
             ),
