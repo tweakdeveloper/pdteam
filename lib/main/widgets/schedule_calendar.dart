@@ -41,7 +41,7 @@ class ScheduleCalendar extends StatelessWidget {
                       decoration: decoration,
                       padding: EdgeInsets.all(8),
                       child: Center(
-                        child: Text(day.date, textAlign: TextAlign.center),
+                        child: Text(day.date),
                       ),
                     ),
                   ),
