@@ -16,6 +16,10 @@ class Schedule {
             date: new RegExp(r'\d+').firstMatch(day.text).group(0),
             shifts: day.querySelectorAll('.monthShiftBox').map<Shift>((shift) {
               final shiftattrs = shift.innerHtml.split('<br>');
+              String skill = shiftattrs[2];
+              int pos = skill.lastIndexOf('<a');
+              skill =
+                  pos != -1 ? skill.substring(0, skill.indexOf('<a')) : skill;
               int color;
               switch (shift.classes.last) {
                 case 'red':
@@ -46,7 +50,7 @@ class Schedule {
               }
               return Shift(
                 times: shiftattrs[1],
-                skill: shiftattrs[2],
+                skill: skill,
                 color: color,
               );
             }).toList(),
