@@ -20,7 +20,7 @@ class Schedule {
               switch (shift.classes.last) {
                 case 'red':
                   {
-                    color = 0xffff0000;
+                    color = 0xffe00000;
                   }
                   break;
                 case 'blue':
@@ -30,12 +30,12 @@ class Schedule {
                   break;
                 case 'turquoise':
                   {
-                    color = 0xff00ffff;
+                    color = 0xff4ec9e5;
                   }
                   break;
                 case 'purple':
                   {
-                    color = 0xffff00ff;
+                    color = 0xff960096;
                   }
                   break;
                 default:
