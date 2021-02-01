@@ -16,6 +16,7 @@ class Schedule {
         days: week.querySelectorAll('td').map((day) {
           return Day(
             date: new RegExp(r'\d+').firstMatch(day.text).group(0),
+            hasShift: day.querySelectorAll('.monthShiftBox').length != 0,
           );
         }).toList(),
       );

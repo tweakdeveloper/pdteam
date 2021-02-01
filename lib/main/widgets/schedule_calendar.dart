@@ -17,7 +17,17 @@ class ScheduleCalendar extends StatelessWidget {
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: week.days.map<Container>((day) {
+              final decoration = day.hasShift
+                  ? BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: Theme.of(context).accentColor,
+                        ),
+                      ),
+                    )
+                  : null;
               return Container(
+                decoration: decoration,
                 padding: EdgeInsets.all(8),
                 child: Text(day.date),
               );
