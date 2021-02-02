@@ -41,7 +41,12 @@ class ScheduleCalendar extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Center(
-                              child: Text(day.date),
+                              child: Text(
+                                day.date,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ),
                           dots,
