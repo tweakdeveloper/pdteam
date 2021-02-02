@@ -20,8 +20,11 @@ class DayPage extends StatelessWidget {
               title: Text(shift.skill),
               subtitle: Text(shift.times),
               leading: Container(
-                width: 5,
-                color: Color(shift.color),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(shift.color),
+                ),
+                width: 12,
               ),
             ),
           );
