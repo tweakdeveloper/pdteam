@@ -15,9 +15,9 @@ class ScheduleView extends StatefulWidget {
 }
 
 class _ScheduleViewState extends State<ScheduleView> {
-  Future<Schedule> futureSchedule;
+  Future<Schedule> _schedule;
 
-  Future<Schedule> fetchSchedule() async {
+  Future<Schedule> _fetchSchedule() async {
     final response = await http.get(
       'https://aaregional.arcos-inc.com/calendar.month.aspx',
       headers: {
@@ -34,36 +34,44 @@ class _ScheduleViewState extends State<ScheduleView> {
   @override
   void initState() {
     super.initState();
-    futureSchedule = fetchSchedule();
+    _schedule = _fetchSchedule();
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: futureSchedule,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return Padding(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                ScheduleCalendar(schedule: snapshot.data),
-              ],
-            ),
-          );
-        } else if (snapshot.hasError) {
-          return Container(
-            child: Text(
-              '${snapshot.error}',
-              style: TextStyle(
-                color: Colors.red,
-              ),
-            ),
-          );
-        }
-        return CircularProgressIndicator();
+    return RefreshIndicator(
+      onRefresh: () async {
+        setState(() {
+          _schedule = _fetchSchedule();
+        });
+        await _schedule;
+        return null;
       },
+      child: FutureBuilder<Schedule>(
+        future: _schedule,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(20),
+                  child: ScheduleCalendar(schedule: snapshot.data),
+                ),
+              ],
+            );
+          } else if (snapshot.hasError) {
+            return Container(
+              child: Text(
+                '${snapshot.error}',
+                style: TextStyle(
+                  color: Colors.red,
+                ),
+              ),
+            );
+          }
+          return CircularProgressIndicator();
+        },
+      ),
     );
   }
 }
