@@ -7,7 +7,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_cookie_manager/webview_cookie_manager.dart';
 
 class LoginView extends StatefulWidget {
-  Function setSpinnerVisible;
+  final Function setSpinnerVisible;
 
   LoginView({Key key, @required this.setSpinnerVisible}) : super(key: key);
 
