@@ -56,36 +56,39 @@ class _ScheduleViewState extends State<ScheduleView> {
           if (snapshot.hasData) {
             return ListView(
               children: [
-                Center(
-                  child: DropdownButton<int>(
-                    value: _month,
-                    items: [for (var i = 1; i <= 12; i++) i]
-                        .map<DropdownMenuItem<int>>((val) {
-                      return DropdownMenuItem(
-                          value: val,
-                          child: Text([
-                            'January',
-                            'February',
-                            'March',
-                            'April',
-                            'May',
-                            'June',
-                            'July',
-                            'August',
-                            'September',
-                            'October',
-                            'November',
-                            'December',
-                          ][val - 1]));
-                    }).toList(),
-                    onChanged: (val) => setState(() {
-                      _month = val;
-                      _schedule = _fetchSchedule();
-                    }),
+                Padding(
+                  padding: EdgeInsets.only(top: 20, bottom: 8),
+                  child: Center(
+                    child: DropdownButton<int>(
+                      value: _month,
+                      items: [for (var i = 1; i <= 12; i++) i]
+                          .map<DropdownMenuItem<int>>((val) {
+                        return DropdownMenuItem(
+                            value: val,
+                            child: Text([
+                              'January',
+                              'February',
+                              'March',
+                              'April',
+                              'May',
+                              'June',
+                              'July',
+                              'August',
+                              'September',
+                              'October',
+                              'November',
+                              'December',
+                            ][val - 1]));
+                      }).toList(),
+                      onChanged: (val) => setState(() {
+                        _month = val;
+                        _schedule = _fetchSchedule();
+                      }),
+                    ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.only(left: 20, right: 20),
                   child: ScheduleCalendar(schedule: snapshot.data),
                 ),
               ],
