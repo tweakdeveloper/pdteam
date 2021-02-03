@@ -4,8 +4,9 @@ import 'package:pdteam/main/main.dart';
 
 class ScheduleCalendar extends StatelessWidget {
   final Schedule schedule;
+  final int month;
 
-  ScheduleCalendar({this.schedule});
+  ScheduleCalendar({this.schedule, this.month});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,10 @@ class ScheduleCalendar extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => DayPage(day: day),
+                            builder: (context) => DayPage(
+                              day: day,
+                              month: day.isCurrentMonth ? month : null,
+                            ),
                           ));
                     },
                     child: Container(

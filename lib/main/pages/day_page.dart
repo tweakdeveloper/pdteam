@@ -4,13 +4,15 @@ import 'package:pdteam/main/main.dart';
 
 class DayPage extends StatelessWidget {
   final Day day;
+  final int month;
 
-  DayPage({Key key, @required this.day}) : super(key: key);
+  DayPage({Key key, @required this.day, this.month}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final monthString = month != null ? months[month - 1] : 'The';
     return Scaffold(
-      appBar: AppBar(title: Text('The ${day.date}')),
+      appBar: AppBar(title: Text('$monthString ${day.date}')),
       body: ListView.builder(
         itemCount: day.shifts.length,
         itemBuilder: (context, index) {

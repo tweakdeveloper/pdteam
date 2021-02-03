@@ -77,7 +77,10 @@ class _ScheduleViewState extends State<ScheduleView> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 20, right: 20),
-                  child: ScheduleCalendar(schedule: snapshot.data),
+                  child: ScheduleCalendar(
+                    schedule: snapshot.data,
+                    month: _month,
+                  ),
                 ),
               ],
             );
