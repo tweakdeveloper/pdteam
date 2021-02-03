@@ -13,7 +13,7 @@ class Schedule {
       return Week(
         days: week.querySelectorAll('td').map((day) {
           return Day(
-            isCurrentMonth: day.classes.contains('dark'),
+            isCurrentMonth: !day.classes.contains('dark'),
             date: new RegExp(r'\d+').firstMatch(day.text).group(0),
             shifts: day.querySelectorAll('.monthShiftBox').map<Shift>((shift) {
               final shiftattrs = shift.innerHtml.split('<br>');

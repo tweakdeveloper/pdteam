@@ -36,10 +36,10 @@ class ScheduleCalendar extends StatelessWidget {
                     },
                     child: Container(
                       decoration: day.isCurrentMonth
-                          ? BoxDecoration(
+                          ? null
+                          : BoxDecoration(
                               color: Color(0x0f000000),
-                            )
-                          : null,
+                            ),
                       padding: EdgeInsets.all(8),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
