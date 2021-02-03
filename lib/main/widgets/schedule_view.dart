@@ -64,21 +64,9 @@ class _ScheduleViewState extends State<ScheduleView> {
                       items: [for (var i = 1; i <= 12; i++) i]
                           .map<DropdownMenuItem<int>>((val) {
                         return DropdownMenuItem(
-                            value: val,
-                            child: Text([
-                              'January',
-                              'February',
-                              'March',
-                              'April',
-                              'May',
-                              'June',
-                              'July',
-                              'August',
-                              'September',
-                              'October',
-                              'November',
-                              'December',
-                            ][val - 1]));
+                          value: val,
+                          child: Text(months[val - 1]),
+                        );
                       }).toList(),
                       onChanged: (val) => setState(() {
                         _month = val;
