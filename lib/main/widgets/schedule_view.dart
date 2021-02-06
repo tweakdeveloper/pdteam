@@ -50,52 +50,56 @@ class _ScheduleViewState extends State<ScheduleView> {
         await _schedule;
         return null;
       },
-      child: FutureBuilder<Schedule>(
-        future: _schedule,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return ListView(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 20, bottom: 8),
-                  child: Center(
-                    child: DropdownButton<int>(
-                      value: _month,
-                      items: [for (var i = 1; i <= 12; i++) i]
-                          .map<DropdownMenuItem<int>>((val) {
-                        return DropdownMenuItem(
-                          value: val,
-                          child: Text(months[val - 1]),
-                        );
-                      }).toList(),
-                      onChanged: (val) => setState(() {
-                        _month = val;
-                        _schedule = _fetchSchedule();
-                      }),
-                    ),
-                  ),
-                ),
-                Padding(
+      child: ListView(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 20, bottom: 8),
+            child: Center(
+              child: DropdownButton<int>(
+                value: _month,
+                items: [for (var i = 1; i <= 12; i++) i]
+                    .map<DropdownMenuItem<int>>((val) {
+                  return DropdownMenuItem(
+                    value: val,
+                    child: Text(months[val - 1]),
+                  );
+                }).toList(),
+                onChanged: (val) => setState(() {
+                  _month = val;
+                  _schedule = _fetchSchedule();
+                }),
+              ),
+            ),
+          ),
+          FutureBuilder<Schedule>(
+            future: _schedule,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Padding(
                   padding: EdgeInsets.only(left: 20, right: 20),
                   child: ScheduleCalendar(
                     schedule: snapshot.data,
                     month: _month,
                   ),
-                ),
-              ],
-            );
-          } else if (snapshot.hasError) {
-            return Container(
-              child: Text(
-                '${snapshot.error}',
-                style: TextStyle(
-                  color: Colors.red,
-                ),
-              ),
-            );
-          }
-          return CircularProgressIndicator();
-        },
+                );
+              } else if (snapshot.hasError) {
+                return Container(
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  child: Text(
+                    '${snapshot.error}',
+                    style: TextStyle(
+                      color: Colors.red,
+                    ),
+                  ),
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          ),
+        ],
       ),
     );
   }
