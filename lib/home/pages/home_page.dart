@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:html/parser.dart' show parse;
 import 'package:http/http.dart' as http;
 
-import 'package:pdteam/main/main.dart';
+import 'package:pdteam/home/home.dart';
 
 class HomePage extends StatefulWidget {
   final String rosterAppsToken;

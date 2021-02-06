@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:pdteam/main/main.dart';
+import 'package:pdteam/schedule/schedule.dart';
 
 class DayPage extends StatelessWidget {
   final Day day;

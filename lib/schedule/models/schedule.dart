@@ -1,6 +1,6 @@
 import 'package:html/dom.dart' as dom;
 
-import 'package:pdteam/main/main.dart';
+import 'package:pdteam/schedule/schedule.dart';
 
 class Schedule {
   final List<Week> weeks;

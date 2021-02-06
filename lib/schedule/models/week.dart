@@ -1,4 +1,4 @@
-import 'package:pdteam/main/main.dart';
+import 'package:pdteam/schedule/schedule.dart';
 
 class Week {
   final List<Day> days;
