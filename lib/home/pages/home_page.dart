@@ -46,9 +46,14 @@ class _HomePageState extends State<HomePage> {
           return ListView.builder(
             itemBuilder: (context, index) {
               final announcement = snapshot.data.announcements[index];
-              return ListTile(
-                title: Text(announcement.title),
-                subtitle: Text(announcement.body),
+              return Card(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                  child: ListTile(
+                    title: Text(announcement.title),
+                    subtitle: Text(announcement.body),
+                  ),
+                ),
               );
             },
             itemCount: snapshot.data.announcements.length,
