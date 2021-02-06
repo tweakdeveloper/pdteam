@@ -27,7 +27,7 @@ class _MainPageState extends State<MainPage> {
         ][_selectedPage]),
       ),
       body: [
-        HomePage(),
+        HomePage(rosterAppsToken: args.rosterAppsAuthToken),
         SchedulePage(rosterAppsToken: args.rosterAppsAuthToken),
       ][_selectedPage],
       bottomNavigationBar: BottomNavigationBar(
