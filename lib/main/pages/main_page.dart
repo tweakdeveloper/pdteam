@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pdteam/home/home.dart';
 import 'package:pdteam/main/main.dart';
 import 'package:pdteam/schedule/schedule.dart';
+import 'package:pdteam/trades/trades.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -26,11 +27,13 @@ class _MainPageState extends State<MainPage> {
         title: Text([
           'RosterApps Home',
           'My Schedule',
+          'My Trades',
         ][_selectedPage]),
       ),
       body: [
         HomePage(rosterAppsToken: args.rosterAppsAuthToken),
         SchedulePage(rosterAppsToken: args.rosterAppsAuthToken),
+        TradesPage(),
       ][_selectedPage],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedPage,
@@ -48,6 +51,10 @@ class _MainPageState extends State<MainPage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today),
             label: 'Schedule',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sync_alt),
+            label: 'Trades',
           ),
         ],
       ),
