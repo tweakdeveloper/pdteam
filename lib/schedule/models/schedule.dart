@@ -43,6 +43,11 @@ class Schedule {
                     color = 0xff960096;
                   }
                   break;
+                case 'orange':
+                  {
+                    color = 0xffe58628;
+                  }
+                  break;
                 default:
                   {
                     color = 0x0;
