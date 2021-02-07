@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
               final announcement = snapshot.data.announcements[index];
               return Card(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                  padding: EdgeInsets.all(8),
                   child: ListTile(
                     title: Text(announcement.title),
                     subtitle: Text(announcement.body),
