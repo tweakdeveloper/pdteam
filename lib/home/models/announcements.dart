@@ -13,7 +13,7 @@ class Announcements {
       return header.innerHtml;
     }).toList();
     final bodies = announceElem.querySelectorAll('p').map<String>((paragraph) {
-      return paragraph.innerHtml.trim();
+      return paragraph.innerHtml.replaceAll('&amp;', '&').trim();
     }).toList();
     int numAnnouncements = titles.length;
     var announcements = new List<Announcement>();
