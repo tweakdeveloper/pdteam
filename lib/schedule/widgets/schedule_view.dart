@@ -99,6 +99,10 @@ class _ScheduleViewState extends State<ScheduleView> {
               }
             },
           ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+            child: ColorsKey(),
+          ),
         ],
       ),
     );

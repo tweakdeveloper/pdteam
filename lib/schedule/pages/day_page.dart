@@ -14,8 +14,14 @@ class DayPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('$monthString ${day.date}')),
       body: ListView.builder(
-        itemCount: day.shifts.length,
+        itemCount: day.shifts.length + 1,
         itemBuilder: (context, index) {
+          if (index == day.shifts.length) {
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+              child: ColorsKey(),
+            );
+          }
           final shift = day.shifts[index];
           return Card(
             child: ListTile(
