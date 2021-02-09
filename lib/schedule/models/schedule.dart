@@ -21,53 +21,10 @@ class Schedule {
               int pos = skill.lastIndexOf('<a');
               skill =
                   pos != -1 ? skill.substring(0, skill.indexOf('<a')) : skill;
-              int color;
-              switch (shift.classes.last) {
-                case 'red':
-                  {
-                    color = 0xffe00000;
-                  }
-                  break;
-                case 'blue':
-                  {
-                    color = 0xff0000ff;
-                  }
-                  break;
-                case 'turquoise':
-                  {
-                    color = 0xff4ec9e5;
-                  }
-                  break;
-                case 'purple':
-                  {
-                    color = 0xff960096;
-                  }
-                  break;
-                case 'orange':
-                  {
-                    color = 0xffe58628;
-                  }
-                  break;
-                case 'green':
-                  {
-                    color = 0xff00cc00;
-                  }
-                  break;
-                case 'gray':
-                  {
-                    color = 0xffcccccc;
-                  }
-                  break;
-                default:
-                  {
-                    color = 0x0;
-                  }
-                  break;
-              }
               return Shift(
                 times: shiftattrs[1],
                 skill: skill,
-                color: color,
+                color: RosterAppsColors[shift.classes.last] ?? 0x0,
               );
             }).toList(),
           );

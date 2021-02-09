@@ -1,3 +1,4 @@
+export 'colors.dart';
 export 'day.dart';
 export 'months.dart';
 export 'schedule.dart';
