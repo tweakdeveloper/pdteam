@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'PDTeam',
       theme: ThemeData(
-        primaryColor: Color(0xffc5d4de),
+        primaryColor: Color(0xff005b94),
         accentColor: Color(0xff009451),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
