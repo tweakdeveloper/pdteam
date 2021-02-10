@@ -13,35 +13,42 @@ class DayPage extends StatelessWidget {
     final monthString = month != null ? months[month - 1] : 'The';
     return Scaffold(
       appBar: AppBar(title: Text('$monthString ${day.date}')),
-      body: ListView.builder(
-        itemCount: day.shifts.length + 1,
-        itemBuilder: (context, index) {
-          if (day.shifts.length == 0) {
-            return Container(
-              alignment: Alignment.center,
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              child: Text('You have no shifts this day'),
-            );
-          }
-          if (index == day.shifts.length) {
-            return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              child: ColorsKey(),
-            );
-          }
-          final shift = day.shifts[index];
-          return Card(
-            child: ListTile(
-              title: Text(shift.skill),
-              subtitle: Text(shift.times),
-              leading: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color(shift.color),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return ListView.builder(
+            itemCount: day.shifts.length + 1,
+            itemBuilder: (context, index) {
+              if (day.shifts.length == 0) {
+                return Container(
+                  alignment: Alignment.center,
+                  constraints: BoxConstraints(
+                    minHeight: constraints.maxHeight,
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  child: Text('You have no shifts this day'),
+                );
+              }
+              if (index == day.shifts.length) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  child: ColorsKey(),
+                );
+              }
+              final shift = day.shifts[index];
+              return Card(
+                child: ListTile(
+                  title: Text(shift.skill),
+                  subtitle: Text(shift.times),
+                  leading: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(shift.color),
+                    ),
+                    width: 12,
+                  ),
                 ),
-                width: 12,
-              ),
-            ),
+              );
+            },
           );
         },
       ),
