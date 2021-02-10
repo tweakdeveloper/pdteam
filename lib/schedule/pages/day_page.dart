@@ -16,6 +16,13 @@ class DayPage extends StatelessWidget {
       body: ListView.builder(
         itemCount: day.shifts.length + 1,
         itemBuilder: (context, index) {
+          if (day.shifts.length == 0) {
+            return Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+              child: Text('You have no shifts this day'),
+            );
+          }
           if (index == day.shifts.length) {
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
