@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:pdteam/home/home.dart';
 import 'package:pdteam/main/main.dart';
+import 'package:pdteam/pto/pto.dart';
 import 'package:pdteam/schedule/schedule.dart';
 import 'package:pdteam/trades/trades.dart';
 
@@ -28,27 +29,31 @@ class _MainPageState extends State<MainPage> {
           'Announcements',
           'My Schedule',
           'My Trades',
+          'My PTO',
         ][_selectedPage]),
       ),
       body: [
         HomePage(rosterAppsToken: args.rosterAppsAuthToken),
         SchedulePage(rosterAppsToken: args.rosterAppsAuthToken),
         TradesPage(),
+        PtoPage(rosterAppsToken: args.rosterAppsAuthToken),
       ][_selectedPage],
       drawer: Drawer(
         child: ListView.builder(
-          itemCount: 3,
+          itemCount: 4,
           itemBuilder: (context, index) {
             return ListTile(
               title: Text([
                 'Announcements',
                 'My Schedule',
                 'My Trades',
+                'My PTO',
               ][index]),
               leading: Icon([
                 Icons.announcement,
                 Icons.calendar_today,
                 Icons.sync_alt,
+                Icons.beach_access,
               ][index]),
               onTap: () {
                 _selectedPage = index;
