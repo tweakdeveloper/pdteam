@@ -35,7 +35,7 @@ class _MainPageState extends State<MainPage> {
       body: [
         HomePage(rosterAppsToken: args.rosterAppsAuthToken),
         SchedulePage(rosterAppsToken: args.rosterAppsAuthToken),
-        TradesPage(),
+        TradesPage(rosterAppsToken: args.rosterAppsAuthToken),
         PtoPage(rosterAppsToken: args.rosterAppsAuthToken),
       ][_selectedPage],
       drawer: Drawer(
@@ -56,7 +56,7 @@ class _MainPageState extends State<MainPage> {
                 Icons.beach_access,
               ][index]),
               onTap: () {
-                _selectedPage = index;
+                setState(() => _selectedPage = index);
                 Navigator.pop(context);
               },
             );
