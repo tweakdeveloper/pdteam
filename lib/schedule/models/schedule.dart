@@ -4,11 +4,16 @@ import 'package:pdteam/schedule/schedule.dart';
 
 class Schedule {
   final List<Week> weeks;
+  final FirstDay firstDay;
 
-  Schedule({this.weeks});
+  Schedule({this.weeks, this.firstDay});
 
   factory Schedule.fromHtml(dom.Document doc) {
     dom.Element calendar = doc.querySelector('.monthCalendar');
+    FirstDay firstDay =
+        calendar.querySelector('tr.header').firstChild.text == 'Monday'
+            ? FirstDay.monday
+            : FirstDay.sunday;
     List<Week> weeks = calendar.querySelectorAll('.week').map((week) {
       return Week(
         days: week.querySelectorAll('td').map((day) {
@@ -31,6 +36,6 @@ class Schedule {
         }).toList(),
       );
     }).toList();
-    return Schedule(weeks: weeks);
+    return Schedule(weeks: weeks, firstDay: firstDay);
   }
 }
