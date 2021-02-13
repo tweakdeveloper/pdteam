@@ -25,7 +25,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text([
-          'RosterApps Home',
+          'Announcements',
           'My Schedule',
           'My Trades',
         ][_selectedPage]),
