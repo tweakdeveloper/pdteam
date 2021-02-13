@@ -35,28 +35,28 @@ class _MainPageState extends State<MainPage> {
         SchedulePage(rosterAppsToken: args.rosterAppsAuthToken),
         TradesPage(),
       ][_selectedPage],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedPage,
-        selectedItemColor: Theme.of(context).accentColor,
-        onTap: (index) {
-          setState(() {
-            _selectedPage = index;
-          });
-        },
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            label: 'Schedule',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.sync_alt),
-            label: 'Trades',
-          ),
-        ],
+      drawer: Drawer(
+        child: ListView.builder(
+          itemCount: 3,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text([
+                'Announcements',
+                'My Schedule',
+                'My Trades',
+              ][index]),
+              leading: Icon([
+                Icons.announcement,
+                Icons.calendar_today,
+                Icons.sync_alt,
+              ][index]),
+              onTap: () {
+                _selectedPage = index;
+                Navigator.pop(context);
+              },
+            );
+          },
+        ),
       ),
     );
   }
