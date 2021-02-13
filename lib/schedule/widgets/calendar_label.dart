@@ -7,13 +7,11 @@ class CalendarLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Center(
-        child: Text(
-          text,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+    return Center(
+      child: Text(
+        text,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

@@ -53,7 +53,7 @@ class ScheduleCalendar extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                CalendarLabel(text: day.date),
+                                Expanded(child: CalendarLabel(text: day.date)),
                                 dots,
                               ],
                             ),
