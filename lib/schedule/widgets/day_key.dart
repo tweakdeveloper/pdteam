@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:pdteam/schedule/schedule.dart';
+
 enum FirstDay { monday, sunday }
 
 class DayKey extends StatelessWidget {
@@ -16,11 +18,13 @@ class DayKey extends StatelessWidget {
       days.add('Su');
     }
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: days.map<Widget>((day) {
-        return Container(
-          padding: EdgeInsets.all(4),
-          child: Text(day, style: TextStyle(fontWeight: FontWeight.bold)),
+        return Expanded(
+          child: Container(
+            padding: EdgeInsets.all(12),
+            child: CalendarLabel(text: day),
+          ),
         );
       }).toList(),
     );

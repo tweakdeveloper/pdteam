@@ -1,3 +1,4 @@
+export 'calendar_label.dart';
 export 'color_description.dart';
 export 'colors_key.dart';
 export 'day_key.dart';
