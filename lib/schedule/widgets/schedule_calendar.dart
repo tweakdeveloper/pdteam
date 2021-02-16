@@ -35,13 +35,14 @@ class ScheduleCalendar extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => DayPage(
-                                    day: day,
-                                    month: day.isCurrentMonth ? month : null,
-                                  ),
-                                ));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DayPage(
+                                  day: day,
+                                  month: day.isCurrentMonth ? month : null,
+                                ),
+                              ),
+                            );
                           },
                           child: Container(
                             decoration: day.isCurrentMonth
