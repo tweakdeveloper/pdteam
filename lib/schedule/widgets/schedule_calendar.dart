@@ -54,7 +54,12 @@ class ScheduleCalendar extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Expanded(child: CalendarLabel(text: day.date)),
+                                Expanded(
+                                  child: CalendarLabel(
+                                    text: day.date,
+                                    color: day.isToday ? Colors.orange : null,
+                                  ),
+                                ),
                                 dots,
                               ],
                             ),

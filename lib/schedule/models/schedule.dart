@@ -18,6 +18,7 @@ class Schedule {
       return Week(
         days: week.querySelectorAll('td').map((day) {
           return Day(
+            isToday: day.getElementsByClassName('monthToday').length != 0,
             isCurrentMonth: !day.classes.contains('dark'),
             date: new RegExp(r'\d+').firstMatch(day.text).group(0),
             shifts: day.querySelectorAll('.monthShiftBox').map<Shift>((shift) {
